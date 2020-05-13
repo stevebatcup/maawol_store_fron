@@ -1,6 +1,5 @@
 /.bundle
 /vendor/bundle
-/bin
 
 /log/*
 !/log/.keep
