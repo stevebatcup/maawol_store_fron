@@ -14,7 +14,7 @@ class BlogPostsController < ApplicationController
 			@title = "Maawol blog"
 		end
 		@page = params[:page] || 1
-		@posts = @posts.order(id: :desc).page(@page).per(8)
+		@posts = @posts.order(published_on: :desc).page(@page).per(8)
 	end
 
 	def show
