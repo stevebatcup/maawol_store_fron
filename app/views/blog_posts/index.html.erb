@@ -1,0 +1,83 @@
+<!-- Main title -->
+<section class="main-title parallax blog-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="main-title-caption">
+
+					<h2>
+						<%= @title %>
+					</h2>
+
+					<ol class="breadcrumb">
+				  	<li><a href="/">Home</a></li>
+				  	<li><a href="/blog">Blog</a></li>
+					</ol>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Blog -->
+<section class="blog">
+	<div class="container">
+		<div class="row">
+
+			<!-- Content -->
+			<div class="col-md-8">
+				<div class="row">
+
+					<!-- Blog post -->
+					<% @posts.each do |post| %>
+					<div class="col-md-12">
+						<div class="post-single wow fadeIn" data-wow-delay="0.1s">
+
+							<% unless post.image.file.nil? %>
+							<figure>
+									<%= link_to image_tag(post.image.url(:small)), blog_post_path(slug: post.slug) %>
+							</figure>
+							<% end %>
+
+							<div class="blog-content">
+								<h2>
+									<%= link_to post.title, blog_post_path(slug: post.slug) %>
+								</h2>
+								<div class="post-categories">
+									<%= category_links(post) %>
+								</div>
+								<p class="post-meta"><%= post.nice_date %></p>
+								<% simple_format post.content %>
+
+								<%= link_to 'Read More', blog_post_path(slug: post.slug), class: "btn-custom btn-fill btn-read-more" %>
+							</div>
+
+						</div>
+					</div>
+					<% end %>
+
+				</div>
+
+				<!-- Pagination -->
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<%= paginate @posts, views_prefix: :blog_posts %>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Sidebar -->
+			<div class="col-md-4">
+
+				<%#= render 'search' %>
+				<%= render 'popular_posts' %>
+				<%= render 'category_box' %>
+				<%= render 'tag_cloud' %>
+
+			</div>
+
+		</div>
+	</div>
+</section>

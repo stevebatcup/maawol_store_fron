@@ -1,0 +1,429 @@
+/************************
+    - Media queries -
+************************/
+
+@media only screen and (max-width:1200px) {
+	.navbar>.container-fluid {
+		padding: 0 3rem;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width:1024px) {
+	.navbar>.container-fluid {
+		padding: 0 2rem;
+	}
+
+	.newsletter-form .form-control {
+		min-width:auto;
+	}
+
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+		width: 15.5%;
+		width: 15.5vw;
+		margin-left: -5px;
+		margin-top: 23px;
+	}
+
+	.sticky-header.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+		margin-top: 4px;
+	}
+
+	.footer-logo {
+		width: 10%;
+		width: 10vw;
+	}
+
+	.parallax-bg {
+		background-attachment: initial;
+	}
+
+	.contact-right {
+		display: none;
+	}
+
+	.price-table {
+		min-height: unset;
+		margin-bottom: 2em;
+	}
+
+	.price-table .price-content ol,
+	.price-table .price-content ul {
+    padding: 0 12vw;
+	}
+
+	.d-md-hide {
+		display: none !important;
+	}
+
+	#technology-features {
+		padding-top: 60px;
+	}
+}
+
+@media only screen and (max-width:768px) {
+
+	.navbar-default .navbar-nav > li > a {
+		font-size: 0.85rem;
+		padding: 6px 3px;
+	}
+
+	.navbar-default .navbar-nav > li.md-hide {
+		display: none;
+	}
+
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+		width: 21%;
+		width: 21vw;
+	}
+
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand h1 {
+		font-size:30px;
+	}
+
+	.header-content {
+		padding-top:0;
+	}
+
+	.video .header-content {
+		padding:0;
+	}
+
+	.banner {
+		background:#0088cc url(../images/header/mobile-bg.png) no-repeat;
+	}
+
+	.header-content h2 br {
+		display:none;
+	}
+
+	.header-content p br {
+		display:none;
+	}
+
+	.feature {
+		padding-bottom:40px;
+	}
+
+	.res-margin {
+		margin-bottom:50px;
+	}
+
+	.footer-logo {
+		width: 10vw;
+	}
+
+	#oaq-slider-carousel {
+		margin-top: 0;
+		padding: 0 0;
+	}
+
+	.blog-home .blog-col img {
+		height: inherit;
+	}
+
+	.feature-center {
+    margin-bottom: 10px;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width:767px) {
+	.navbar-default .navbar-toggle {
+		border:0;
+		border-radius:0;
+		padding:0;
+	}
+
+	.navbar-brand {
+		padding: 16px 15px 20px;
+		width: 35vw;
+	}
+
+	.sticky-header .navbar-brand {
+		padding-top:18px;
+	}
+
+	#responsive-menu {
+		display:block !important;
+	}
+
+	.slicknav_menu {
+		margin-left:-15px;
+		margin-right:-15px;
+		padding:0;
+		background:#111;
+	}
+
+	.slicknav_menu li {
+		padding:0 10px;
+	}
+
+	.slicknav_menu a {
+		color:#fff;
+		padding-top:6px;
+		padding-bottom:6px;
+		text-transform:uppercase;
+		border:1px solid transparent;
+	}
+
+	.slicknav_menu a a {
+		border:none !important;
+	}
+
+	.slicknav_nav .slicknav_row:hover,
+	.slicknav_nav a:hover {
+		background:none;
+		color:#fff;
+		border:1px solid #fff;
+		border-radius:0;
+	}
+
+	.slicknav_btn {
+		padding:4px 4px;
+		background:#111 !important;
+	}
+
+	.slicknav_icon-bar {
+		box-shadow:none;
+		border-radius:0;
+		margin:2px 0;
+	}
+
+	.navbar-toggle {
+		top:2px;
+	}
+
+	.navbar-collapse {
+		border:none !important;
+		border-top:1px solid #fa534a !important;
+		box-shadow:none;
+		padding:30px;
+		background:#0088cc;
+	}
+
+	.navbar-toggle:hover {
+		background:transparent !important;
+	}
+
+	.navbar-toggle .icon-bar {
+		margin:4px 0;
+	}
+
+	.banner {
+		padding:136px 0 50px;
+	}
+
+	.header-content {
+		text-align:center;
+	}
+
+	.header-slider {
+		margin-top:80px;
+	}
+
+	.header-content h2 {
+		font-size:30px;
+	}
+
+	.header-content p {
+		font-size:16px;
+	}
+
+	section {
+		padding:80px 0;
+	}
+
+	.section-title h2 {
+		font-size:26px;
+	}
+
+	.section-title h2:before {
+		display:none;
+	}
+
+	.feature-mobile {
+		padding-top:30px;
+		margin-bottom:-120px;
+	}
+
+	.section-title {
+		margin-bottom: 50px;
+	}
+
+	.key-features .section-title {
+		padding-top:0;
+	}
+
+	.feature-box.box-left {
+		padding-right:0;
+		padding-left:90px;
+		text-align:left;
+	}
+
+	.feature-box.box-left .box-icon {
+		right:auto;
+		left:0;
+	}
+
+	.feature-box.box-left:last-child {
+		margin-bottom:30px;
+	}
+
+	.counter-content {
+		border:0;
+	}
+
+	.subscribe-form .form-control {
+		min-width:auto;
+		width:100%;
+		border-right:1px solid #e0e0e0;
+		margin-bottom:10px;
+	}
+
+	.subscribe-form .btn-subscribe {
+		border-radius:2px;
+	}
+
+	.support-image {
+		text-align:center;
+	}
+
+	.testimonial-carousel .carousel-text .single-box {
+	  width: 100%;
+	}
+
+	.post-single {
+		max-width:360px;
+		margin:0 auto 30px;
+	}
+
+	.post-single figure {
+		width:100%;
+		float:none;
+	}
+
+	.post-single .blog-content {
+		width:100%;
+		float:none;
+		margin-top:30px;
+	}
+
+	.main-title-caption h1 {
+		font-size:24px;
+	}
+
+	.entry-body,
+	.entry-header,
+	.entry-footer {
+		padding:20px;
+	}
+
+	.single-postbox {
+		padding:30px;
+	}
+
+	.related-post-single {
+		margin-bottom:30px;
+	}
+
+	.entry-body ol,
+	.entry-body ul {
+		padding-left:20px;
+	}
+
+	.footer-logo {
+		width: 19%;
+		width: 19vw;
+	}
+
+	.contact-right {
+		padding-left:15px;
+		padding-top:50px;
+	}
+
+	.price-table .price-content ol,
+	.price-table .price-content ul {
+    padding: 0 1vw;
+	}
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width:480px) {
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+		width: 53vw;
+		padding: 0;
+		margin: 4px 0 0 15px;
+	}
+
+	.sticky-header.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+		margin-top: 1px;
+	}
+
+	.download-button a {
+		margin-right:0;
+	}
+
+	.key-feature-single i {
+		font-size:38px;
+	}
+
+	.sidebar-single {
+		padding:30px;
+		margin-bottom:30px;
+	}
+
+	.tag-cloud a {
+		font-size:12px;
+		padding:3px 16px;
+	}
+
+	.post-nav .btn-prev,
+	.post-nav .btn-next {
+		float:none;
+	}
+
+	.author-img {
+		width:100%;
+		float:none;
+		text-align:center;
+		margin-bottom:30px;
+	}
+
+	.comment-single-content {
+		width:100%;
+		float:none;
+	}
+
+	.icon-project i {
+		font-size:32px;
+	}
+
+	.single-project-area h3 {
+		font-size:14px;
+	}
+
+	.single-project-area h2 {
+		font-size:28px;
+	}
+
+	.header-content h2 {
+		font-size:26px;
+	}
+
+	.contact-right {
+		display: none;
+	}
+
+	.footer-logo {
+		width: 18%;
+		width: 18vw;
+	}
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width:360px) {
+	.header-content h2 {
+		min-height:100px;
+	}
+}

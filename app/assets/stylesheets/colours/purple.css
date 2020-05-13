@@ -1,0 +1,114 @@
+a:hover,
+a:focus,
+.download-button a:hover,
+.feature-single .icon,
+.feature-single:hover h3,
+.key-feature-single i,
+.feature-box .box-icon,
+.feature-box:hover .box-title,
+.price-table:hover .price-title,
+.price-table:hover .price-content .price-rate .rate,
+.team-member:hover .team-details .team-title-box .title,
+.social-links > a:hover,
+.video-control:hover i,
+.footer-social ul li a:hover,
+.work-btn a,
+.owl-testimonial .owl-nav .owl-prev,
+.owl-testimonial .owl-nav .owl-next,
+.newsletter-form .btn-subscribe,
+.newsletter-form .btn-subscribe:focus,
+.price-btn a,
+.btn-fill,
+.btn-search,
+.sidebar-list ul li a:hover,
+.post-categories a,
+.recent-post-categories a,
+.post-single ul li a,
+.btn-read-more,
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > li > a:hover,
+.entry-body h1,
+.entry-body h2,
+.entry-body a,
+.post-tags a:hover,
+.post-social a:hover,
+.post-nav a,
+.related-post-single ul li a,
+.author-info h3 a,
+.author-info h4,
+.btn-comment {
+	color:#ca3378;
+}
+
+.btn-download.btn-fill:hover {
+	color:#ca3378 !important;
+}
+
+.nav ul,
+.spinner-loader > div,
+.banner,
+.banner:after,
+.section-title h2:before,
+.feature-box:hover .box-icon,
+.work-btn a:before,
+.subscribe-form .btn-subscribe,
+.subscribe-form .btn-subscribe:focus,
+.complete-project-area,
+.screenshot-slider .owl-dots .active span,
+.screenshot-slider .owl-nav .owl-prev:hover,
+.screenshot-slider .owl-nav .owl-next:hover,
+.testimonials-newsletter,
+.price-title.featured,
+.price-btn a:before,
+.price-table .price-footer > a:hover,
+.btn-fill:before,
+.main-title:after,
+.btn-search:before,
+.author-social-follow a:hover,
+.tagcloud a:hover,
+.btn-read-more:before,
+.entry-header,
+.post-nav a:before,
+.btn-comment:before,
+.btn-default.disabled:hover {
+	background:#ca3378;
+}
+
+.feature-box .box-icon,
+.work-btn a,
+.download-link-form .form-control:focus,
+.screenshot-slider .owl-dots .owl-dot span,
+.screenshot-slider .owl-nav .owl-prev:hover,
+.screenshot-slider .owl-nav .owl-next:hover,
+.price-btn a,
+.btn-fill,
+.btn-search,
+.author-social-follow a:hover,
+.tag-cloud a:hover,
+.btn-read-more,
+.sidebar-title h2,
+.pagination > li > a:hover,
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.post-nav a,
+.btn-comment,
+.form-control:focus {
+	border-color:#ca3378;
+}
+
+.form-control:focus + .btn-search,
+.btn-search:hover,
+.btn-search:focus {
+	border-color:#ca3378 !important;
+}
+
+.feature-single:before {
+	border-top:1px solid #ca3378;
+	border-bottom:1px solid #ca3378;
+}
+
+.feature-single:after {
+	border-left:1px solid #ca3378;
+	border-right:1px solid #ca3378;
+}
