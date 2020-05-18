@@ -537,6 +537,10 @@ section {
 	position:relative;
 	background:#fff;
 	padding:100px 0;
+
+	img.screenshot-shadow {
+		box-shadow: 2px 2px 5px #666;
+	}
 }
 
 section.bg-grey {
@@ -1120,7 +1124,8 @@ section.key-features {
     - 14. Pricing -
 **********************/
 .price-table {
-	min-height: 730px;
+	position: relative;
+	min-height: 790px;
     border-radius:2px;
     text-align:center;
     width:100%;
@@ -1144,7 +1149,7 @@ section.key-features {
 /* Title */
 .price-table .price-title {
 	position:relative;
-    padding:40px 20px;
+    padding:25px 20px 15px;
 	margin-bottom:0;
 	border-radius:2px 2px 0 0;
 	background:#f0f0f0;
@@ -1270,6 +1275,16 @@ section.key-features {
 	color:#fff;
 	background:#111;
 	border-radius:0 0 2px 2px;
+}
+
+.price-table p.maawol-percentage {
+	position: absolute;
+	bottom: 0;
+	width: 80%;
+	margin: 0 auto 20px;
+	font-size: 0.95em;
+	font-style: italic;
+	color: #555;
 }
 
 /**********************
