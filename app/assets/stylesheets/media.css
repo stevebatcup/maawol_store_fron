@@ -48,7 +48,8 @@
 	}
 
 	.price-table .price-content ol,
-	.price-table .price-content ul {
+	.price-table .price-content ul,
+	.price-table .price-content p {
     padding: 0 12vw;
 	}
 

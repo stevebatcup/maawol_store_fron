@@ -247,13 +247,13 @@ p {
 	background:rgba(255, 255, 255, 0.1);
 	border-radius:2px;
 	border:1px solid rgba(255, 255, 255, 0.3) !important;
-	padding:8px 4px 6px 48px;
-	font-size:0.95rem;
+	padding:8px 20px 6px 60px;
+	font-size:20px;
 	font-weight:600;
 	min-width:220px;
 	margin-right:20px;
-	margin-bottom:30px;
-	text-align:left;
+	margin-bottom:20px;
+	text-align: left;
 	transition:all 0.1s linear;
 }
 
@@ -266,10 +266,16 @@ p {
 }
 
 .btn-download i {
-	font-size:22px;
+	font-size:32px;
 	position:absolute;
-	top:16px;
-	left:10px;
+	top:14px;
+	left:16px;
+
+	&.fa-school {
+		font-size: 28px;
+		top: 16px;
+		left: 13px;
+	}
 }
 
 .btn-download:focus,
@@ -469,7 +475,7 @@ p {
 }
 
 .header-content h2 {
-	font-size:48px;
+	font-size:42px;
 	font-weight:600;
 	color:#fff;
 	text-transform:uppercase;
@@ -484,10 +490,10 @@ p {
 }
 
 .download-button a {
-	margin-right:8px;
+	margin-right:20px;
 	color:#fff;
 	border-color:#fff;
-	line-height:21px;
+	line-height:25px;
 }
 
 .download-button a:before {
@@ -1125,7 +1131,7 @@ section.key-features {
 **********************/
 .price-table {
 	position: relative;
-	min-height: 790px;
+	min-height: 875px;
     border-radius:2px;
     text-align:center;
     width:100%;
@@ -1239,7 +1245,7 @@ section.key-features {
 
 /* Content */
 .price-table .price-content {
-    padding:25px 30px;
+    padding:25px 30px 7.2em;
     font-size: 0.95em;
 }
 
@@ -1252,7 +1258,7 @@ section.key-features {
 
 .price-table .price-content ol li,
 .price-table .price-content ul li {
-    margin-bottom:10px;
+    margin-bottom:5px;
     list-style: circle;
 }
 
@@ -1277,14 +1283,21 @@ section.key-features {
 	border-radius:0 0 2px 2px;
 }
 
-.price-table p.maawol-percentage {
+.price-table  .price-content p {
+	font-weight: bold;
+}
+
+.price-table  .price-content p.maawol-percentage {
 	position: absolute;
 	bottom: 0;
-	width: 80%;
+	left: 13%;
+	width: 74%;
 	margin: 0 auto 20px;
 	font-size: 0.95em;
 	font-style: italic;
-	color: #555;
+	color: #111;
+	font-weight: normal;
+	padding: 0;
 }
 
 /**********************
