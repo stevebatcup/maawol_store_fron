@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'blog', to: 'blog_posts#index', mode: :all
   get 'blog/category/:slug', to: 'blog_posts#index', as: :blog_category, mode: :category
   get 'blog/tag/:slug', to: 'blog_posts#index', as: :blog_tag, mode: :tag
+  get 'about-us', to: 'about_us#show'
 
 	namespace :admin do
 		resources	:blog_posts

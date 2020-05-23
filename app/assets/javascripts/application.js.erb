@@ -28,6 +28,11 @@
 		$(".banner.image-bg").backstretch("<%= asset_url('image/bg.jpg') %>");
 	}
 
+	//Image background / about-us
+	if ($(".banner.about-bg").length>0) {
+		$(".banner.about-bg").backstretch("<%= asset_url('parallax/pricing.png') %>");
+	}
+
 	//Image background / blog
 	if ($(".main-title.blog-bg").length>0) {
 		$(".main-title.blog-bg").backstretch("<%= asset_url('image/bg.jpg') %>");
