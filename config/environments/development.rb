@@ -62,4 +62,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.hosts << "store_front"
+  config.hosts << "www.maawol.com"
 end

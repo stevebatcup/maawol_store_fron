@@ -111,4 +111,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.hosts << "store_front"
+  config.hosts << "www.maawol.com"
 end
