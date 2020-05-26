@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_072021) do
+ActiveRecord::Schema.define(version: 2020_05_26_131715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,35 @@ ActiveRecord::Schema.define(version: 2020_05_13_072021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "blog_post_count", default: 0
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.string "domain"
+    t.integer "port"
+    t.string "access_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "protocol"
+  end
+
+  create_table "subscription_notifications", force: :cascade do |t|
+    t.integer "subscription_id"
+    t.string "notification_id"
+    t.string "method"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "forward_on_status"
+    t.text "forward_on_msg"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "school_id"
+    t.string "subscription_id"
+    t.string "platform"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
