@@ -3,13 +3,12 @@ class SubscriptionNotificationsController < ApplicationController
 
 	def create
 		return render json: { status: :error, message: "Webhook not required" } if !method_acceptable
-		@subscription = Subscription.find_by(subscription_id: subscription_id_from_params, platform: params[:platform])
-		if @subscription
-			notification = @subscription.subscription_notifications.create({
+		if subscription = find_subscription
+			notification = subscription.subscription_notifications.create({
 				notification_id: notification_id_from_params,
 				method: method_from_params
 			})
-			forward_on_to_school do |result, message|
+			forward_on_to_school(subscription) do |result, message|
 				if result
 				  status = :success
 				else
@@ -20,14 +19,22 @@ class SubscriptionNotificationsController < ApplicationController
 				render json: { status: status, message: message }
 			end
 		else
-			render json: { status: :error, message: "Subscription #{subscription_id_from_params} not found" }
+			render json: { status: :error, message: "Subscription not found" }
 		end
 	end
 
 private
 
-	def forward_on_to_school
-		url = @subscription.school.callback_url(params[:platform])
+	def find_subscription
+		if method_from_params == :card_expiry_reminder
+			Subscription.find_by(customer_id: params[:content][:customer][:id], platform: :chargebee)
+		else
+			Subscription.find_by(subscription_id: subscription_id_from_params, platform: params[:platform])
+		end
+	end
+
+	def forward_on_to_school(subscription)
+		url = subscription.school.callback_url(params[:platform])
 		request = {
 			headers: {
 				'Content-Type': forward_oncontent_type_header
@@ -77,9 +84,9 @@ private
 	def method_from_params
 		@method_from_params ||= begin
 			if params[:platform] == :chargebee
-				params[:event_type]
+				params[:event_type].to_sym
 			elsif params[:platform] == :paypal
-				params[:txn_type]
+				params[:txn_type].to_sym
 			end
 		end
 	end
@@ -90,6 +97,6 @@ private
 		elsif params[:platform] == :paypal
 			acceptable = [:recurring_payment, :recurring_payment_outstanding_payment_failed, :recurring_payment_profile_cancel, :recurring_payment_failed, :recurring_payment_skipped]
 		end
-		acceptable.include?(method_from_params.to_sym)
+		acceptable.include?(method_from_params)
 	end
 end

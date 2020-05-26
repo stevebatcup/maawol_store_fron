@@ -9,7 +9,8 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     school: Field::BelongsTo,
-    subscription_id: Field::Number,
+    subscription_id: Field::String,
+    customer_id: Field::String,
     platform: Field::String,
     status: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
@@ -24,6 +25,7 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   school
   subscription_id
+  customer_id
   platform
   ].freeze
 
@@ -32,6 +34,7 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   school
   subscription_id
+  customer_id
   platform
   status
   created_at
@@ -44,6 +47,7 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   school
   subscription_id
+  customer_id
   platform
   status
   ].freeze

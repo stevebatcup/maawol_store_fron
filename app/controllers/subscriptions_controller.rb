@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
 		if school
 			subscription = Subscription.new({
 				subscription_id: params[:id],
+				customer_id: params[:customer_id],
 				platform: params[:platform],
 				school_id: school.id,
 				status: :active
