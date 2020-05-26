@@ -2,6 +2,7 @@ class SubscriptionNotificationsController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
 	def create
+		return render json: { status: :error, message: "Webhook not required" } if !method_acceptable
 		@subscription = Subscription.find_by(subscription_id: subscription_id_from_params, platform: params[:platform])
 		if @subscription
 			notification = @subscription.subscription_notifications.create({
@@ -74,10 +75,21 @@ private
 	end
 
 	def method_from_params
-		if params[:platform] == :chargebee
-			params[:event_type]
-		elsif params[:platform] == :paypal
-			params[:txn_type]
+		@method_from_params ||= begin
+			if params[:platform] == :chargebee
+				params[:event_type]
+			elsif params[:platform] == :paypal
+				params[:txn_type]
+			end
 		end
+	end
+
+	def method_acceptable
+		if params[:platform] == :chargebee
+			acceptable = [:payment_succeeded, :payment_failed, :card_expiry_reminder]
+		elsif params[:platform] == :paypal
+			acceptable = [:recurring_payment, :recurring_payment_outstanding_payment_failed, :recurring_payment_profile_cancel, :recurring_payment_failed, :recurring_payment_skipped]
+		end
+		acceptable.include?(method_from_params.to_sym)
 	end
 end
