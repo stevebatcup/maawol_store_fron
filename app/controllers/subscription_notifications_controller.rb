@@ -19,7 +19,7 @@ class SubscriptionNotificationsController < ApplicationController
 				render json: { status: status, message: message }
 			end
 		else
-			render json: { status: :error, message: "Subscription not found" }
+			raise ActiveRecord::RecordNotFound
 		end
 	end
 
