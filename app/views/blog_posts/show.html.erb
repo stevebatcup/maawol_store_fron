@@ -142,7 +142,7 @@
 						<div class="author-content">
 							<%= image_tag(@post.blog_author.image.url(:large)) unless @post.blog_author.image.file.nil? %>
 							<p>
-								<%= @post.blog_author.bio %>
+								<%= @post.blog_author.bio.html_safe %>
 							</p>
 						</div>
 

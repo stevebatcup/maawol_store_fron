@@ -11,7 +11,7 @@ class BlogAuthorDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     image: ImageField,
-    bio: Field::Text,
+    bio: TinyMceField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

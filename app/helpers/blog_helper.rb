@@ -54,7 +54,9 @@ module BlogHelper
 			if main_post.blog_tags.any?
 				tag ||= main_post.blog_tags.first
 			end
-			tag.blog_posts.where.not(id: main_post.id).each { |post| posts << post }
+			excludes = posts.map(&:id)
+			excludes << main_post.id
+			tag.blog_posts.where.not(id: excludes).each { |post| posts << post }
 		end
 
 		posts.sample(limit)
