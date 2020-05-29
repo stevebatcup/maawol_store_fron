@@ -24,49 +24,40 @@
 	    - Banner -
 	******************/
 	//Image background
-	if ($(".banner.image-bg").length>0) {
-		$(".banner.image-bg").backstretch("<%= asset_url('image/bg.jpg') %>");
-	}
+	$("[data-img-bg]").each(function(i, element) {
+		var img = $(element).data('img-bg');
+		$(element).backstretch(img);
+	});
 
-	//Image background / about-us
-	if ($(".banner.about-bg").length>0) {
-		$(".banner.about-bg").backstretch("<%= asset_url('parallax/pricing.png') %>");
-	}
+	// //Slide background
+	// if ($(".banner.slide-bg").length>0) {
+	// 	$(".banner.slide-bg").backstretch([
+	// 		"images/slide/1.jpg",
+	// 		"images/slide/2.jpg",
+	// 		"images/slide/3.jpg"
+	// 	], {duration:3000, fade:750});
+	// }
 
-	//Image background / blog
-	if ($(".main-title.blog-bg").length>0) {
-		$(".main-title.blog-bg").backstretch("<%= asset_url('image/bg.jpg') %>");
-	}
+	// //Video background
+	// if ($(".banner.video-bg").length>0) {
+	// 	//Hide player on mobile
+	// 	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	// 		$(".player").hide();
+	// 		$(".player-controls").hide();
+	// 	}
 
-	//Slide background
-	if ($(".banner.slide-bg").length>0) {
-		$(".banner.slide-bg").backstretch([
-			"images/slide/1.jpg",
-			"images/slide/2.jpg",
-			"images/slide/3.jpg"
-		], {duration:3000, fade:750});
-	}
+	// 	//Youtube player
+	// 	$(".player").mb_YTPlayer();
 
-	//Video background
-	if ($(".banner.video-bg").length>0) {
-		//Hide player on mobile
-		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			$(".player").hide();
-			$(".player-controls").hide();
-		}
+	// 	//Player controls
+	// 	$("#play").on("click", function() {
+	// 		$(".player").playYTP();
+	// 	});
 
-		//Youtube player
-		$(".player").mb_YTPlayer();
-
-		//Player controls
-		$("#play").on("click", function() {
-			$(".player").playYTP();
-		});
-
-		$("#pause").on("click", function() {
-			$(".player").pauseYTP();
-		});
-	}
+	// 	$("#pause").on("click", function() {
+	// 		$(".player").pauseYTP();
+	// 	});
+	// }
 
 	/********************
 	    - Preloader -

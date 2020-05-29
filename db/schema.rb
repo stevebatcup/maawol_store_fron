@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_140522) do
+ActiveRecord::Schema.define(version: 2020_05_29_082534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_140522) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "blog_post_count", default: 0
+    t.integer "genre_id"
   end
 
   create_table "blog_categories_posts", id: false, force: :cascade do |t|
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_140522) do
     t.boolean "is_popular", default: false
     t.string "image"
     t.date "published_on"
+    t.integer "genre_id"
   end
 
   create_table "blog_posts_tags", id: false, force: :cascade do |t|
@@ -63,6 +65,14 @@ ActiveRecord::Schema.define(version: 2020_05_26_140522) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "blog_post_count", default: 0
+    t.integer "genre_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "schools", force: :cascade do |t|

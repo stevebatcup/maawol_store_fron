@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'subscription_notifications/paypal', to: 'subscription_notifications#create', platform: :paypal
 
 	namespace :admin do
+    resources :genres
     resources :schools
     resources :subscriptions
 		resources	:blog_posts

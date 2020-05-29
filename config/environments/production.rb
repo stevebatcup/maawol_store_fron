@@ -112,4 +112,5 @@ Rails.application.configure do
 
   config.hosts << "store_front"
   config.hosts << "www.maawol.com"
+  config.hosts << "faawol.maawol.com"
 end

@@ -1,5 +1,6 @@
 class BlogPost < ApplicationRecord
 	belongs_to	:blog_author
+	belongs_to :genre
 	has_and_belongs_to_many	:blog_tags
 	has_and_belongs_to_many	:blog_categories
 

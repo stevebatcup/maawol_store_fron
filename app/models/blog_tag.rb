@@ -1,5 +1,6 @@
 class BlogTag < ApplicationRecord
 	has_and_belongs_to_many	:blog_posts
+	belongs_to :genre
 	before_save	:set_slug
 
 	def set_slug

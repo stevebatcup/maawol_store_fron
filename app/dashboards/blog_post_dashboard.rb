@@ -10,6 +10,7 @@ class BlogPostDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     title: Field::String,
     content: TinyMceField,
+    genre: Field::BelongsTo,
     blog_author: Field::BelongsTo,
     published_on: Field::Date,
     image: ImageField,
@@ -28,6 +29,7 @@ class BlogPostDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   title
   blog_author
+  genre
   published_on
   is_popular
   ].freeze
@@ -37,6 +39,7 @@ class BlogPostDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   title
   blog_author
+  genre
   published_on
   is_popular
   image
@@ -49,6 +52,7 @@ class BlogPostDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   title
   blog_author
+  genre
   published_on
   is_popular
   image
