@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
 					slug = 'faawol'
 				when 'www.maawol.test'
 					slug = 'maawol'
+				else
+					slug = 'maawol'
 				end
 			else
 				case request.host

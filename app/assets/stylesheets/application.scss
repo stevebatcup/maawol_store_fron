@@ -1285,6 +1285,11 @@ section.key-features {
 
 .price-table  .price-content p {
 	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.price-table .price-content sup i {
+	font-size: 0.6em;
 }
 
 .price-table  .price-content p.maawol-percentage {
@@ -1294,10 +1299,29 @@ section.key-features {
 	width: 74%;
 	margin: 0 auto 20px;
 	font-size: 0.95em;
-	font-style: italic;
-	color: #111;
-	font-weight: normal;
+	font-weight: bold;
 	padding: 0;
+}
+
+#transaction_fees_small_print {
+	margin-top: 15px;
+
+	p {
+		font-size: 0.8em;
+		text-align: center;
+		color: #ffffff;
+
+		sup {
+			i {
+				font-size: 0.8em;
+			}
+		}
+
+		a {
+			color: #ffffff;
+			text-decoration:underline;
+		}
+	}
 }
 
 /**********************
