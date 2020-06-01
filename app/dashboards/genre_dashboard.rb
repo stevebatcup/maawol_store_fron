@@ -9,7 +9,11 @@ class GenreDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
+    genre: Field::String,
+    trade_name: Field::String,
+    base_url: Field::String,
+    contact_name: Field::String,
+    contact_email: Field::String,
     slug: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -21,23 +25,33 @@ class GenreDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  name
+  genre
+  trade_name
   slug
+  base_url
+  contact_name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  name
+  genre
+  trade_name
   slug
+  base_url
+  contact_name
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  name
+  genre
+  trade_name
   slug
+  base_url
+  contact_name
+  contact_email
   ].freeze
 
   # COLLECTION_FILTERS
@@ -56,6 +70,6 @@ class GenreDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(genre)
-    genre.name
+    genre.genre
   end
 end
