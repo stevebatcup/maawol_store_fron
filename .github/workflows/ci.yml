@@ -6,6 +6,10 @@ jobs:
     services:
       db:
         image: postgres:13.0
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: store_front_test
         ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
@@ -21,13 +25,15 @@ jobs:
           ruby-version: 2.7.x
       - name: Build and run tests
         env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
-          POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: store_front_test
+          # DATABASE_URL: postgres://postgres:@localhost:5432/test
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:prepare
-          bundle exec rails test
+          bundle exec rspec
