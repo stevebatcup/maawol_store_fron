@@ -22,7 +22,7 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.7.x
+          ruby-version: 2.6.6
       - name: Build and run tests
         env:
           RAILS_ENV: test
