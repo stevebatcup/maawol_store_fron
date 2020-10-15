@@ -31,6 +31,8 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: store_front_test
           POSTGRES_HOST: postgres
+          AWS_ACCESS_KEY_ID: AWS
+          AWS_SECRET_ACCESS_KEY: AWS
           # DATABASE_URL: postgres://postgres:@localhost:5432/test
         run: |
           sudo apt-get -yqq install libpq-dev
