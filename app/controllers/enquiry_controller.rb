@@ -1,6 +1,6 @@
 class EnquiryController < ApplicationController
 	def create
-		return render json: { status: :error, error: "Ooops no..." } if params[:sweets].length > 0
+		# return render json: { status: :error, error: "Ooops no..." } if params[:sweets].length > 0
 
 		if params[:email].length > 0
 			Pony.mail({
