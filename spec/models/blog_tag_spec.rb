@@ -32,16 +32,16 @@ RSpec.describe BlogTag, type: :model do
 
   it 'updates all post counts using an attached blog post' do
     dog_tag = create(:blog_tag, name: 'Dogs', genre: @genre)
-    tag_tag = create(:blog_tag, name: 'tags', genre: @genre)
+    cat_tag = create(:blog_tag, name: 'Cats', genre: @genre)
     post1 = create(:blog_post, title: 'Blog post 1', blog_tags: [dog_tag], genre: @genre, blog_author: @author)
-    create(:blog_post, title: 'Blog post 2', blog_tags: [tag_tag], genre: @genre, blog_author: @author)
-    create(:blog_post, title: 'Blog post 3', blog_tags: [tag_tag], genre: @genre, blog_author: @author)
-    create(:blog_post, title: 'Blog post 4', blog_tags: [dog_tag, tag_tag], genre: @genre, blog_author: @author)
+    create(:blog_post, title: 'Blog post 2', blog_tags: [cat_tag], genre: @genre, blog_author: @author)
+    create(:blog_post, title: 'Blog post 3', blog_tags: [cat_tag], genre: @genre, blog_author: @author)
+    create(:blog_post, title: 'Blog post 4', blog_tags: [dog_tag, cat_tag], genre: @genre, blog_author: @author)
 
     BlogTag.update_counts(post1)
     dog_tag.reload
     expect(dog_tag.blog_post_count).to eq 2
-    tag_tag.reload
-    expect(tag_tag.blog_post_count).to eq 3
+    cat_tag.reload
+    expect(cat_tag.blog_post_count).to eq 3
   end
 end

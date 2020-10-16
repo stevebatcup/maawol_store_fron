@@ -1,31 +1,31 @@
 <!-- Popular posts -->
 <div class="sidebar-single">
 
-	<div class="sidebar-title">
-		<h2>Popular Posts</h2>
-	</div>
+  <div class="sidebar-title">
+    <h2>Popular Posts</h2>
+  </div>
 
-	<div class="sidebar-content">
+  <div class="sidebar-content">
 
-		<% popular_blog_posts.each do |post| %>
+    <% popular_blog_posts(genre_from_host).each do |post| %>
 
-		<div class="recent-post">
-			<% unless post.image.file.nil? %>
-			<div class="recent-post-image">
-				<%= link_to image_tag(post.image.url(:thumbnail)), blog_post_path(slug: post.slug) %>
-			</div>
-			<% end %>
+    <div class="recent-post">
+      <% unless post.image.file.nil? %>
+      <div class="recent-post-image">
+        <%= link_to image_tag(post.image.url(:thumbnail)), blog_post_path(slug: post.slug) %>
+      </div>
+      <% end %>
 
-			<div class="recent-post-info">
-				<h4><%= link_to post.title, blog_post_path(slug: post.slug) %></h4>
-				<div class="recent-post-categories">
-					<%= category_links(post) %>
-				</div>
-				<p><%= post.nice_date %></p>
-			</div>
-		</div>
+      <div class="recent-post-info">
+        <h4><%= link_to post.title, blog_post_path(slug: post.slug) %></h4>
+        <div class="recent-post-categories">
+          <%= category_links(post) %>
+        </div>
+        <p><%= post.nice_date %></p>
+      </div>
+    </div>
 
-		<% end %>
+    <% end %>
 
-	</div>
+  </div>
 </div>

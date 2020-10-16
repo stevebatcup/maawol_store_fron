@@ -33,4 +33,9 @@ class ApplicationController < ActionController::Base
       'maawol'
     end
   end
+
+  helper_method :popular_blog_posts
+  def popular_blog_posts(genre, limit = 3)
+    genre.blog_posts.where(is_popular: true).order('RANDOM()').limit(limit)
+  end
 end
