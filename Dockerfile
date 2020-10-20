@@ -1,9 +1,11 @@
 FROM ruby:2.6.6
 
-RUN apt-get update -yqq \
-		&& apt-get install -yqq --no-install-recommends \
-		postgresql-client vim nodejs \
-		&& rm -rf /var/lib/apt/lists
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update -yqq \
+    && apt-get install -yqq --no-install-recommends \
+    postgresql-client vim nodejs yarn \
+    && rm -rf /var/lib/apt/lists
 
 ENV BUNDLE_PATH /gems
 ENV APP_NAME store_front
@@ -16,5 +18,4 @@ ADD . $APP_PATH
 
 ENV RAILS_ENV development
 
-EXPOSE 4010
 CMD ./lib/docker-entrypoint.sh

@@ -24,4 +24,4 @@ if [[ -a /usr/src/app/tmp/pids/server.pid ]]; then
 	rm /usr/src/app/tmp/pids/server.pid
 fi
 
-rails s -b 0.0.0.0 -p 4010 -P /usr/src/app/tmp/pids/server.pid
+rails s -b 0.0.0.0 -p $PORT -P /usr/src/app/tmp/pids/server.pid
