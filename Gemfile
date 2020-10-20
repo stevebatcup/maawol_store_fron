@@ -38,6 +38,7 @@ gem 'httparty'
 gem 'kaminari', '>= 1.2.1'
 gem 'mini_magick'
 gem 'mini_racer', platforms: :ruby
+gem 'msgpack', '1.0.0'
 gem 'pony'
 gem 'puma', '>= 4.3.5'
 gem 'sprockets', '3.7.2'
