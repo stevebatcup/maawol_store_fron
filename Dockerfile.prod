@@ -17,6 +17,9 @@ WORKDIR $APP_PATH
 ADD . $APP_PATH
 
 ENV RAILS_ENV production
+
+RUN  bundle check || bundle install  --deployment --without="development test"
+
 ENV RAILS_SERVE_STATIC_FILES=true
 
 CMD ./lib/docker-entrypoint.sh

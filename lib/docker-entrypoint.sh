@@ -2,8 +2,6 @@
 
 if [ $RAILS_ENV = 'production' ]
 then
-  bundle check || bundle install  --deployment --without="development test"
-
 	echo "Precompiling assets...."
 	rails assets:precompile
 
