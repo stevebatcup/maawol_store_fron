@@ -6,49 +6,49 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
-    name: Test job
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports: ['5432:5432']
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.6.6
-      - name: Build and run tests
-        env:
-          RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
-          AWS_ACCESS_KEY_ID: AWS
-          AWS_SECRET_ACCESS_KEY: AWS
-        run: |
-          sudo apt-get -yqq install libpq-dev
-          gem install bundler -v 1.17.2
-          bundle install --jobs 4 --retry 3
-          bundle exec rails db:prepare
-          bundle exec rspec
+  # test:
+  #   name: Test job
+  #   runs-on: ubuntu-latest
+  #   services:
+  #     postgres:
+  #       image: postgres
+  #       env:
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: postgres
+  #         POSTGRES_DB: postgres
+  #       ports: ['5432:5432']
+  #       options: >-
+  #         --health-cmd pg_isready
+  #         --health-interval 10s
+  #         --health-timeout 5s
+  #         --health-retries 5
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Setup Ruby
+  #       uses: actions/setup-ruby@v1
+  #       with:
+  #         ruby-version: 2.6.6
+  #     - name: Build and run tests
+  #       env:
+  #         RAILS_ENV: test
+  #         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: postgres
+  #         POSTGRES_DB: postgres
+  #         POSTGRES_HOST: localhost
+  #         POSTGRES_PORT: 5432
+  #         AWS_ACCESS_KEY_ID: AWS
+  #         AWS_SECRET_ACCESS_KEY: AWS
+  #       run: |
+  #         sudo apt-get -yqq install libpq-dev
+  #         gem install bundler -v 1.17.2
+  #         bundle install --jobs 4 --retry 3
+  #         bundle exec rails db:prepare
+  #         bundle exec rspec
 
   deploy:
     name: Deploy job
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -70,14 +70,19 @@ jobs:
       - name: Push image to Google Cloud Container Registry
         run: docker push gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
 
+      - name: Configure Cloud Run Service access
+        run: gcloud run services add-iam-policy-binding ${{ secrets.GCLOUD_APP_NAME }} \
+                      --member="allUsers" \
+                      --role="roles/run.invoker"
+
       - name: Deploy on cloud run
         run: |
           gcloud run deploy ${{ secrets.GCLOUD_APP_NAME }} \
-                    --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} \
-                    --project ${{ secrets.GCLOUD_PROJECT }} \
-                    --region europe-west2 \
-                    --platform managed \
-                    --timeout=12m \
+                    --image=gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} \
+                    --project=${{ secrets.GCLOUD_PROJECT }} \
+                    --region=europe-west1 \
                     --allow-unauthenticated \
-                    --memory 1Gi \
+                    --platform=managed \
+                    --timeout=12m \
+                    --memory=1Gi \
                     --set-env-vars=RAILS_ENV=production,POSTGRES_USER=${{ secrets.POSTGRES_USER }},POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }},POSTGRES_HOST=${{ secrets.POSTGRES_HOST }},RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }},FASTMAIL_PASSWORD=${{ secrets.FASTMAIL_PASSWORD }},AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }},AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
