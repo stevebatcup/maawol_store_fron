@@ -75,6 +75,6 @@ jobs:
                     --region=europe-west1 \
                     --allow-unauthenticated \
                     --platform=managed \
-                    --port=4030
+                    --port=4030 \
                     --memory=2Gi \
                     --set-env-vars=PORT=4030,RAILS_ENV=production,POSTGRES_USER=${{ secrets.POSTGRES_USER }},POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }},POSTGRES_HOST=${{ secrets.POSTGRES_HOST }},RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }},FASTMAIL_PASSWORD=${{ secrets.FASTMAIL_PASSWORD }},AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }},AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
