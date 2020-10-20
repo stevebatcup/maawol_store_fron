@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy on cloud run
         run: |
-          gcloud run deploy ${{ secrets.GCLOUD_APP_NAME }} --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --project ${{ secrets.GCLOUD_PROJECT }} --region europe-west2 --platform managed --platform 1Gi
+          gcloud run deploy ${{ secrets.GCLOUD_APP_NAME }} --image gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }} --project ${{ secrets.GCLOUD_PROJECT }} --region europe-west2 --platform managed --memory 1Gi
 
   # test:
   #   name: Test job
