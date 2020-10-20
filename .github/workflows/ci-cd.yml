@@ -59,6 +59,7 @@ jobs:
         with:
           service_account_email: ${{ secrets.GCLOUD_EMAIL }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
+          project_id: ${{ secrets.GCLOUD_PROJECT }}
 
       # - name: Configure Cloud Run Service access
       #   run: gcloud run services add-iam-policy-binding --quiet --region=europe-west1 --member=allUsers --platform=managed --role=roles/run.invoker ${{ secrets.GCLOUD_APP_NAME }}
