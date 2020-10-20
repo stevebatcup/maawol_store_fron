@@ -53,6 +53,42 @@ RSpec.describe BlogPost, type: :model do
     it 'finds no next posts if there are none' do
       expect(BlogPost.next_post(@posts[0])).to be_nil
     end
+
+    it 'finds posts from the same category' do
+      main_post = @posts[0]
+      recommended_posts = BlogPost.recommended_posts_by_category(@swan_cat, [main_post])
+
+      titles = recommended_posts.map(&:title)
+      expect(recommended_posts.length).to eq 1
+      expect(titles).to include 'Blog post 4'
+      expect(titles).to_not include main_post.title
+    end
+
+    it 'finds posts from the same tag' do
+      main_post = @posts[1]
+      recommended_posts = BlogPost.recommended_posts_by_tag(@cat_tag, [main_post])
+
+      titles = recommended_posts.map(&:title)
+      expect(recommended_posts.length).to eq 2
+      expect(titles).to include 'Blog post 3'
+      expect(titles).to_not include main_post.title
+    end
+
+    it 'finds a limited set of recommended posts by category and tag' do
+      main_post = @posts[1]
+      6.times do |i|
+        @posts << create(:blog_post, title: "Cat Blog post #{i + @posts.length + 1}", blog_categories: [@duck_cat], genre: @genre, blog_author: @author)
+      end
+      4.times do |i|
+        @posts << create(:blog_post, title: "Tag Blog post #{i + @posts.length + 1}", blog_tags: [@cat_tag], genre: @genre, blog_author: @author)
+      end
+
+      recommended_posts = BlogPost.recommended_posts(main_post, @duck_cat, @cat_tag, 10)
+
+      titles = recommended_posts.map(&:title)
+      expect(recommended_posts.length).to eq 10
+      expect(titles).to_not include main_post.title
+    end
   end
 
   def create_tags

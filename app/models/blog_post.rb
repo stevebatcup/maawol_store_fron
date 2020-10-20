@@ -33,21 +33,27 @@ class BlogPost < ApplicationRecord
   end
 
   def self.recommended_posts(main_post, category, tag, limit = 10)
-    posts = []
-    posts << recommended_posts_by_category(category, main_post)
-    posts << recommended_posts_by_tag(tag) if posts.size < limit
+    posts = recommended_posts_by_category(category, [main_post])
+
+    if posts.nil? || (posts.size < limit)
+      tag_posts = recommended_posts_by_tag(tag, [main_post] + posts)
+      posts += tag_posts unless tag_posts.nil? || tag_posts.empty?
+    end
+
+    return unless posts.any?
+
     posts.sample(limit)
   end
 
-  def self.recommended_posts_by_category(category, main_post)
-    category ||= main_post.genre.blog_categories.first if main_post.genre.blog_categories.any?
-    category.blog_posts.where.not(id: main_post.id).each { |post| posts << post } unless category.nil?
+  def self.recommended_posts_by_category(category, excludes = [])
+    return if category.nil?
+
+    category.blog_posts.where.not(id: excludes.map(&:id))
   end
 
-  def self.recommended_posts_by_tag(main_post)
-    tag ||= main_post.genre.blog_tags.first if main_post.genre.blog_tags.any?
-    excludes = posts.map(&:id)
-    excludes << main_post.id
-    tag.genre.blog_posts.where.not(id: excludes).each { |post| posts << post } unless tag.nil?
+  def self.recommended_posts_by_tag(tag, excludes = [])
+    return if tag.nil?
+
+    tag.blog_posts.where.not(id: excludes.map(&:id))
   end
 end
