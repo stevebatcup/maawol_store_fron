@@ -1,9 +1,9 @@
 #!/bin/bash -e
 
-bundle check || bundle install
-
 if [ $RAILS_ENV = 'production' ]
 then
+  bundle check || bundle install  --deployment --without="development test"
+
 	echo "Precompiling assets...."
 	rails assets:precompile
 
@@ -17,6 +17,11 @@ then
 	echo "Copying NGINX config"
 	mkdir -p /etc/nginx/conf.d
 	cp config/nginx.conf /etc/nginx/conf.d/$APP_NAME.conf
+fi
+
+if [ $RAILS_ENV != 'production' ]
+then
+  bundle check || bundle install
 fi
 
 if [[ -a /usr/src/app/tmp/pids/server.pid ]]; then
