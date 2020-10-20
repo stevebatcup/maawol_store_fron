@@ -115,4 +115,5 @@ Rails.application.configure do
   # config.hosts << "faawol.maawol.com"
   config.hosts.clear
 
+  config.google_cloud.trace.capture_stack = true
 end
