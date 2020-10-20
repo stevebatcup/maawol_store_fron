@@ -18,4 +18,6 @@ ADD . $APP_PATH
 
 ENV RAILS_ENV development
 
+RUN  bundle check || bundle install
+
 CMD ./lib/docker-entrypoint.sh

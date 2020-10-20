@@ -17,10 +17,9 @@ then
 	cp config/nginx.conf /etc/nginx/conf.d/$APP_NAME.conf
 fi
 
-if [ $RAILS_ENV != 'production' ]
-then
-  bundle check || bundle install
-fi
+# if [ $RAILS_ENV != 'production' ]
+# then
+# fi
 
 if [[ -a /usr/src/app/tmp/pids/server.pid ]]; then
 	echo "Removing stale PID file from /usr/src/app/tmp/pids/server.pid...."

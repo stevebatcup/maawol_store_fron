@@ -7,18 +7,18 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     postgresql-client vim nodejs yarn \
     && rm -rf /var/lib/apt/lists
 
-ENV BUNDLE_PATH /gems
+ENV RAILS_ENV production
 ENV APP_NAME store_front
 ENV APP_PATH /usr/src/app
 ENV PATH $APP_PATH/bin:$PATH
 
 WORKDIR $APP_PATH
 
-ADD . $APP_PATH
-
-ENV RAILS_ENV production
-
+COPY Gemfile Gemfile.lock ./
+ENV BUNDLE_FROZEN=true
 RUN  bundle check || bundle install  --deployment --without="development test"
+
+ADD . $APP_PATH
 
 ENV RAILS_SERVE_STATIC_FILES=true
 
