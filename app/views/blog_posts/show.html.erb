@@ -1,64 +1,64 @@
 <!-- Main title -->
 <section class="main-title parallax blog-bg" data-img-bg="<%= asset_url('maawol/marimba.jpg') %>">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="main-title-caption">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-title-caption">
 
-					<h2><%= @post.title %></h2>
+          <h2><%= @post.title %></h2>
 
-					<ol class="breadcrumb">
-				  	<li><a href="/">Home</a></li>
-				  	<li><a href="/blog">Blog</a></li>
-				  	<li>
-				  		<%= link_to @main_category.nice_name, blog_category_path(slug: @main_category.slug) %>
-				  	</li>
-					</ol>
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li>
+              <%= link_to @main_category.nice_name, blog_category_path(slug: @main_category.slug) %>
+            </li>
+          </ol>
 
-				</div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Blog -->
 <section class="blog">
-	<div class="container">
-		<div class="row">
+  <div class="container">
+    <div class="row">
 
-			<!-- Content -->
-			<div class="col-md-8">
+      <!-- Content -->
+      <div class="col-md-8">
 
-				<!-- Blog content -->
-				<div class="blog-single-content">
+        <!-- Blog content -->
+        <div class="blog-single-content">
 
-					<div class="entry-image">
-						<%= image_tag @post.image.url(:large) unless @post.image.file.nil? %>
-					</div>
+          <div class="entry-image">
+            <%= image_tag @post.image.url(:large) unless @post.image.file.nil? %>
+          </div>
 
-					<div class="entry-header">
-						<ul>
-							<li>
-								<%= category_link(@main_category, '<i class="far fa-folder-open"></i>') %>
-							</li>
-							<li>
-								<i class="far fa-user"></i> By: <%= @post.blog_author.name %>
-							</li>
-							<li><i class="far fa-calendar"></i> <%= @post.nice_date %></li>
-						</ul>
-					</div>
+          <div class="entry-header">
+            <ul>
+              <li>
+                <%= category_link(@main_category, '<i class="far fa-folder-open"></i>') %>
+              </li>
+              <li>
+                <i class="far fa-user"></i> By: <%= @post.blog_author.name %>
+              </li>
+              <li><i class="far fa-calendar"></i> <%= @post.nice_date %></li>
+            </ul>
+          </div>
 
-					<div class="entry-body">
+          <div class="entry-body">
 
-						<%= simple_format @post.content %>
+            <%= simple_format @post.content %>
 
-					</div>
+          </div>
 
-					<div class="entry-footer">
+          <div class="entry-footer">
 
-						<!-- Post tags -->
-<!-- 						<div class="post-tags">
+            <!-- Post tags -->
+            <!-- 						<div class="post-tags">
 							<span>Tags: </span>
 							<a href="#">Birds</a>
 							<a href="#">Sparrow</a>
@@ -66,8 +66,8 @@
 							<a href="#">Natural</a>
 						</div> -->
 
-						<!-- Share -->
-						<!--
+            <!-- Share -->
+            <!--
 						<div class="post-social social-links">
 							<span>Share: </span>
 							<a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -80,73 +80,73 @@
 						</div>
  						-->
 
-						<!-- Previous / Next -->
-						<div class="post-nav">
-							<% if previous_post = BlogPost.previous_post(@post) %>
-								<%= link_to '<i class="fas fa-arrow-circle-left"></i> Previous Post'.html_safe,
+            <!-- Previous / Next -->
+            <div class="post-nav">
+              <% if previous_post = BlogPost.previous_post(@post) %>
+              <%= link_to '<i class="fas fa-arrow-circle-left"></i> Previous Post'.html_safe,
 														blog_post_path(slug: previous_post.slug),
 														class: 'btn-custom btn-fill btn-prev' %>
-							<% end %>
+              <% end %>
 
-							<% if next_post = BlogPost.next_post(@post) %>
-								<%= link_to '<i class="fas fa-arrow-circle-right"></i> Next Post'.html_safe,
+              <% if next_post = BlogPost.next_post(@post) %>
+              <%= link_to '<i class="fas fa-arrow-circle-right"></i> Next Post'.html_safe,
 														blog_post_path(slug: next_post.slug),
 														class: 'btn-custom btn-fill btn-next' %>
-							<% end %>
-						</div>
+              <% end %>
+            </div>
 
-					</div>
-				</div>
+          </div>
+        </div>
 
-				<!-- Related posts -->
-				<div class="related-post single-postbox">
+        <!-- Related posts -->
+        <div class="related-post single-postbox">
 
-					<div class="single-postbox-title">
-						<h2>You might also like</h2>
-					</div>
+          <div class="single-postbox-title">
+            <h2>You might also like</h2>
+          </div>
 
-					<div class="row">
-						<% recommended_posts(@post, @main_category, @main_tag, 3).each do |post| %>
-						<div class="col-md-4 col-sm-4">
-							<div class="related-post-single">
+          <div class="row">
+            <% BlogPost.recommended_posts(@post, @main_category, @main_tag, 3).each do |post| %>
+            <div class="col-md-4 col-sm-4">
+              <div class="related-post-single">
 
-								<% unless post.image.file.nil? %>
-									<%= link_to image_tag(post.image.url(:thumbnail)), blog_post_path(slug: post.slug) %>
-								<% end %>
+                <% unless post.image.file.nil? %>
+                <%= link_to image_tag(post.image.url(:thumbnail)), blog_post_path(slug: post.slug) %>
+                <% end %>
 
-								<h3>
-									<%= link_to post.title, blog_post_path(slug: post.slug) %>
-								</h3>
+                <h3>
+                  <%= link_to post.title, blog_post_path(slug: post.slug) %>
+                </h3>
 
-							</div>
-						</div>
-						<% end %>
-					</div>
-				</div>
-			</div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
-			<!-- Sidebar -->
-			<div class="col-md-4">
+      <!-- Sidebar -->
+      <div class="col-md-4">
 
-				<%#= render 'search' %>
+        <%#= render 'search' %>
 
-				<!-- Author -->
-				<div class="sidebar-single sidebar-author-area">
+        <!-- Author -->
+        <div class="sidebar-single sidebar-author-area">
 
-					<div class="sidebar-title">
-						<h2><%= @post.blog_author.name %></h2>
-					</div>
+          <div class="sidebar-title">
+            <h2><%= @post.blog_author.name %></h2>
+          </div>
 
-					<div class="sidebar-content">
+          <div class="sidebar-content">
 
-						<div class="author-content">
-							<%= image_tag(@post.blog_author.image.url(:large)) unless @post.blog_author.image.file.nil? %>
-							<p>
-								<%= @post.blog_author.bio.html_safe %>
-							</p>
-						</div>
+            <div class="author-content">
+              <%= image_tag(@post.blog_author.image.url(:large)) unless @post.blog_author.image.file.nil? %>
+              <p>
+                <%= @post.blog_author.bio.html_safe %>
+              </p>
+            </div>
 
-						<!--
+            <!--
 						<div class="author-social social-links">
 							<a href="#"><i class="fab fa-facebook-f"></i></a>
 							<a href="#"><i class="fab fa-twitter"></i></a>
@@ -156,16 +156,16 @@
 						</div>
 						-->
 
-					</div>
+          </div>
 
-				</div>
+        </div>
 
-				<%= render 'popular_posts' %>
-				<%= render 'category_box' %>
-				<%= render 'tag_cloud' %>
+        <%= render 'popular_posts' %>
+        <%= render 'category_box' %>
+        <%= render 'tag_cloud' %>
 
-			</div>
+      </div>
 
-		</div>
-	</div>
+    </div>
+  </div>
 </section>

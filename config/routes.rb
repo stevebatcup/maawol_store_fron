@@ -13,17 +13,17 @@ Rails.application.routes.draw do
   post 'subscription_notifications/chargebee', to: 'subscription_notifications#create', platform: :chargebee
   post 'subscription_notifications/paypal', to: 'subscription_notifications#create', platform: :paypal
 
-  get "privacy-policy", to: "privacy_policy#show", slug: 'privacy-policy'
-  get "terms-and-conditions", to: "terms_and_conditions#show", slug: 'terms-and-conditions'
+  get 'privacy-policy', to: 'privacy_policy#show', slug: 'privacy-policy'
+  get 'terms-and-conditions', to: 'terms_and_conditions#show', slug: 'terms-and-conditions'
 
-	namespace :admin do
+  namespace :admin do
     resources :genres
     resources :schools
     resources :subscriptions
-		resources	:blog_posts
-		resources	:blog_authors
-		resources	:blog_tags
-		resources	:blog_categories
-	  root to: "schools#index"
-	end
+    resources	:blog_posts
+    resources	:blog_authors
+    resources	:blog_tags
+    resources	:blog_categories
+    root to: 'schools#index'
+  end
 end
