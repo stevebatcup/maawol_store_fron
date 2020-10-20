@@ -42,6 +42,7 @@ gem 'msgpack', '1.0.0'
 gem 'pony'
 gem 'puma', '>= 4.3.5'
 gem 'sprockets', '3.7.2'
+gem "stackdriver"
 gem 'tinymce-rails'
 
 group :development, :test do
