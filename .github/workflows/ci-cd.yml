@@ -61,7 +61,8 @@ jobs:
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
 
       - name: Configure Cloud Run Service access
-        run: gcloud beta run services add-iam-policy-binding --quiet --region=europe-west1 --member=allUsers --role=roles/run.invoker ${{ secrets.GCLOUD_APP_NAME }}
+        run: gcloud components install beta --quiet && \
+             gcloud beta run services add-iam-policy-binding --quiet --region=europe-west1 --member=allUsers --role=roles/run.invoker ${{ secrets.GCLOUD_APP_NAME }}
 
       - name: Build Docker image
         run: |
