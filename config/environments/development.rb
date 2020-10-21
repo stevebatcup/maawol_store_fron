@@ -61,8 +61,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.hosts << "store_front"
-  config.hosts << "www.maawol.com"
-  config.hosts << "www.faawol.test"
-  config.hosts << "www.maawol.test"
+  config.hosts << 'store_front'
+  config.hosts << 'www.maawol.com'
+  config.hosts << 'www.faawol.test'
+  config.hosts << 'www.maawol.test'
 end

@@ -11,6 +11,8 @@ ENV RAILS_ENV production
 ENV APP_NAME store_front
 ENV APP_PATH /usr/src/app
 ENV PATH $APP_PATH/bin:$PATH
+ENV RAILS_SERVE_STATIC_FILES=true
+ENV RAILS_LOG_TO_STDOUT=true
 
 WORKDIR $APP_PATH
 
@@ -20,7 +22,6 @@ RUN  bundle check || bundle install  --deployment --without="development test"
 
 ADD . $APP_PATH
 
-ENV RAILS_SERVE_STATIC_FILES=true
-ENV RAILS_LOG_TO_STDOUT=true
+RUN bundle exec rake assets:precompile
 
 CMD ./lib/docker-entrypoint.sh
