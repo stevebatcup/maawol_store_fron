@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
       'faawol'
     when 'www.maawol.com'
       'maawol'
+    else
+      'maawol'
     end
   end
 
