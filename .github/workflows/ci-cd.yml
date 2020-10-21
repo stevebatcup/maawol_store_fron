@@ -66,7 +66,6 @@ jobs:
           gcloud builds submit \
             --quiet \
             --config=./cloudbuild.yaml \
-            --tag "gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}:$GITHUB_SHA"
 
       - name: Deploy to cloud run
         run: |-

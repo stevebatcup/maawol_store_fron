@@ -3,8 +3,8 @@ steps:
   timeout: 800s
   args:
   - build
-  - "--tag=gcr.io/maawol-store-front/store-front-app"
+  - "--tag=gcr.io/maawol-store-front/store-front-app:latest"
   - "--file=./Dockerfile.prod"
   - .
 images:
-- "gcr.io/maawol-store-front/store-front-app"
+- "gcr.io/maawol-store-front/store-front-app:latest"
