@@ -23,12 +23,12 @@ class BlogPost < ApplicationRecord
   end
 
   def self.previous_post(post)
-    befores = where('published_on < ?', post.published_on).order(published_on: :desc)
+    befores = where('published_on < ?', post.published_on).where(genre_id: post.genre_id).order(published_on: :desc)
     befores.any? ? befores.first : nil
   end
 
   def self.next_post(post)
-    afters = where('published_on > ?', post.published_on).order(published_on: :asc)
+    afters = where('published_on > ?', post.published_on).where(genre_id: post.genre_id).order(published_on: :asc)
     afters.any? ? afters.first : nil
   end
 
