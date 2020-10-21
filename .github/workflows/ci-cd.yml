@@ -62,15 +62,6 @@ jobs:
           project_id: ${{ secrets.GCLOUD_PROJECT }}
 
       - name: Build and push image to Google Container Registry
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
-          AWS_ACCESS_KEY_ID: AWS
-          AWS_SECRET_ACCESS_KEY: AWS
         run: |-
           gcloud builds submit \
             --quiet \
