@@ -65,6 +65,7 @@ jobs:
         run: |-
           gcloud builds submit \
             --quiet \
+            --file=./Dockerfile.prod \
             --tag "gcr.io/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}:$GITHUB_SHA"
 
       - name: Deploy to cloud run

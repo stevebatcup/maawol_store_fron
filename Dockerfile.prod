@@ -22,6 +22,6 @@ RUN  bundle check || bundle install  --deployment --without="development test"
 
 ADD . $APP_PATH
 
-RUN bundle exec rake assets:precompile
+RUN bundle exec rails assets:precompile
 
 CMD ./lib/docker-entrypoint.sh
