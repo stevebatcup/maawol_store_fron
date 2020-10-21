@@ -2,7 +2,6 @@ steps:
 - name: "gcr.io/cloud-builders/docker"
   timeout: 800s
   env:
-    RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
     POSTGRES_DB: postgres
